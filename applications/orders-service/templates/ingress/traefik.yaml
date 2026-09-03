@@ -20,24 +20,33 @@ spec:
         app.kubernetes.io/name: {{ .Values.traefik.name }}
     spec:
       serviceAccountName: {{ .Values.traefik.name }}
+      securityContext:
+        runAsNonRoot: true
+        seccompProfile:
+          type: RuntimeDefault
       containers:
         - name: {{ .Values.traefik.name }}
           image: "{{ .Values.images.traefik.repository }}:{{ .Values.images.traefik.tag }}"
           imagePullPolicy: {{ .Values.images.traefik.pullPolicy }}
           args:
             - --entrypoints.web.address=:{{ .Values.traefik.containerPort }}
+            - --ping=true
+            - --ping.entrypoint=web
             - --providers.kubernetesingress=true
-            - --providers.kubernetesingress.ingressclass={{ .Values.ingress.className }}
+            - --providers.kubernetesingress.namespaces={{ include "orders-service.namespace" . }}
+            - --api.dashboard=false
           ports:
             - name: web
               containerPort: {{ .Values.traefik.containerPort }}
           readinessProbe:
-            tcpSocket:
+            httpGet:
+              path: /ping
               port: web
             initialDelaySeconds: 5
             periodSeconds: 5
           livenessProbe:
-            tcpSocket:
+            httpGet:
+              path: /ping
               port: web
             initialDelaySeconds: 15
             periodSeconds: 10
@@ -45,6 +54,19 @@ spec:
 {{ toYaml .Values.traefik.resources | indent 12 }}
           securityContext:
             allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            runAsNonRoot: true
+            runAsUser: 1000
+            runAsGroup: 1000
+            capabilities:
+              drop:
+                - ALL
+          volumeMounts:
+            - name: tmp
+              mountPath: /tmp
+      volumes:
+        - name: tmp
+          emptyDir: {}
 ---
 apiVersion: v1
 kind: Service
