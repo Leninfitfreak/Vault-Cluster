@@ -1,0 +1,6 @@
+﻿apiVersion: v2
+name: orders-service
+description: Local orders application baseline before Vault integration
+type: application
+version: 0.1.0
+appVersion: "1.0.0"
