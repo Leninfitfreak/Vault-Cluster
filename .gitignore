@@ -12,3 +12,4 @@
 .tmp/
 .DS_Store
 Thumbs.db
+!platform/external-vault/files/vault-ca.crt

@@ -1,0 +1,4 @@
+vault:
+  address: "https://vault.local:8300"
+  hostIP: "192.168.65.254"
+  caConfigMapName: "vault-ca"

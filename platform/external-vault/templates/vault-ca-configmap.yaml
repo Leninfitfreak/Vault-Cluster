@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Values.vault.caConfigMapName }}
+  namespace: {{ .Release.Namespace }}
+  labels:
+    app.kubernetes.io/name: external-vault
+    app.kubernetes.io/managed-by: Helm
+data:
+  vault-ca.crt: |
+{{ .Files.Get "files/vault-ca.crt" | indent 4 }}

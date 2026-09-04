@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: external-vault
+  namespace: argocd
+spec:
+  project: vault-platform
+
+  source:
+    repoURL: https://github.com/Leninfitfreak/Vault-Cluster.git
+    targetRevision: main
+    path: platform/external-vault
+    helm:
+      releaseName: external-vault
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: vault-integration
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
