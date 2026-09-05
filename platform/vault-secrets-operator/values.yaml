@@ -1,0 +1,6 @@
+vault-secrets-operator:
+  defaultVaultConnection:
+    enabled: false
+
+  defaultAuthMethod:
+    enabled: false
