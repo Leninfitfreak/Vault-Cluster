@@ -1,0 +1,9 @@
+resource "vault_policy" "orders_service" {
+  name = "orders-service"
+
+  policy = <<-EOT
+    path "kv/data/ha-test" {
+      capabilities = ["read"]
+    }
+  EOT
+}

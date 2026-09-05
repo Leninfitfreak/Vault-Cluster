@@ -13,3 +13,7 @@
 .DS_Store
 Thumbs.db
 !platform/external-vault/files/vault-ca.crt
+terraform/**/.terraform/
+terraform/**/*.tfstate
+terraform/**/*.tfstate.*
+terraform/**/local.auto.tfvars
