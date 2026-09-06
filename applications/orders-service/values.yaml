@@ -27,9 +27,9 @@ serviceAccount:
   create: true
 
 secrets:
-  create: true
+  create: false
   ordersCredentials:
-    name: orders-service-credentials
+    name: orders-service-vault-credentials
     apiKey: fake-local-orders-api-key
     databaseUsername: orders_user
     databasePassword: fake-local-orders-password
