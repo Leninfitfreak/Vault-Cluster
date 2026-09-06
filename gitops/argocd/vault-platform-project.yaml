@@ -3,6 +3,7 @@ kind: AppProject
 metadata:
   name: vault-platform
   namespace: argocd
+
 spec:
   description: External Vault Kubernetes integration
 
@@ -32,9 +33,24 @@ spec:
   namespaceResourceWhitelist:
     - group: ""
       kind: ConfigMap
+
     - group: ""
       kind: Secret
+
     - group: ""
       kind: Service
+
     - group: ""
       kind: ServiceAccount
+
+    - group: apps
+      kind: Deployment
+
+    - group: batch
+      kind: Job
+
+    - group: rbac.authorization.k8s.io
+      kind: Role
+
+    - group: rbac.authorization.k8s.io
+      kind: RoleBinding
