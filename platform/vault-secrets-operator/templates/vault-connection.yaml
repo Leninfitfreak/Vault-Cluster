@@ -1,0 +1,9 @@
+apiVersion: secrets.hashicorp.com/v1beta1
+kind: VaultConnection
+metadata:
+  name: external-vault
+  namespace: vault-secrets-operator
+spec:
+  address: https://vault.local:8300
+  caCertSecretRef: vault-ca
+  skipTLSVerify: false
