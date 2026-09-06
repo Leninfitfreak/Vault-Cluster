@@ -37,3 +37,5 @@ spec:
       kind: Ingress
     - group: secrets.hashicorp.com
       kind: VaultAuth
+    - group: secrets.hashicorp.com
+      kind: VaultStaticSecret
