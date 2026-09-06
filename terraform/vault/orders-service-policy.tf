@@ -5,5 +5,9 @@ resource "vault_policy" "orders_service" {
     path "kv/data/ha-test" {
       capabilities = ["read"]
     }
+
+    path "kv/data/orders-service" {
+      capabilities = ["read"]
+    }
   EOT
 }
