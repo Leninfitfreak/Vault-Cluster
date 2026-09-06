@@ -4,6 +4,6 @@ metadata:
   name: external-vault
   namespace: vault-secrets-operator
 spec:
-  address: https://vault.local:8300
+  address: https://host.minikube.internal:8300
   caCertSecretRef: vault-ca
   skipTLSVerify: false
