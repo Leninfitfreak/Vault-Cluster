@@ -54,3 +54,18 @@ spec:
 
     - group: rbac.authorization.k8s.io
       kind: RoleBinding
+
+    - group: secrets.hashicorp.com
+      kind: VaultConnection
+
+    - group: secrets.hashicorp.com
+      kind: VaultAuth
+
+    - group: secrets.hashicorp.com
+      kind: VaultStaticSecret
+
+    - group: secrets.hashicorp.com
+      kind: VaultDynamicSecret
+
+    - group: secrets.hashicorp.com
+      kind: VaultPKISecret

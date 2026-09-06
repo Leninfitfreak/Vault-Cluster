@@ -17,3 +17,4 @@ terraform/**/.terraform/
 terraform/**/*.tfstate
 terraform/**/*.tfstate.*
 terraform/**/local.auto.tfvars
+!platform/vault-secrets-operator/files/vault-ca.crt
