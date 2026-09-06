@@ -27,16 +27,18 @@ serviceAccount:
   create: true
 
 secrets:
-  create: false
   ordersCredentials:
+    create: false
     name: orders-service-vault-credentials
     apiKey: fake-local-orders-api-key
     databaseUsername: orders_user
     databasePassword: fake-local-orders-password
+
   externalCredentials:
+    create: true
     name: external-service-credentials
     externalApiToken: fake-local-external-api-token
-
+    
 frontend:
   name: frontend-service
   replicas: 1
