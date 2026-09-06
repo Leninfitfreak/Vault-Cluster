@@ -3,11 +3,11 @@ resource "vault_kubernetes_auth_backend_role" "orders_service" {
   role_name = "orders-service"
 
   bound_service_account_names = [
-    "vault-auth"
+    "orders-service"
   ]
 
   bound_service_account_namespaces = [
-    "vault-integration"
+    "orders"
   ]
 
   token_policies = [

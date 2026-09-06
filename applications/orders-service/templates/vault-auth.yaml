@@ -1,0 +1,13 @@
+apiVersion: secrets.hashicorp.com/v1beta1
+kind: VaultAuth
+metadata:
+  name: orders-service
+  namespace: orders
+spec:
+  vaultConnectionRef: vault-secrets-operator/external-vault
+  method: kubernetes
+  mount: kubernetes
+
+  kubernetes:
+    role: orders-service
+    serviceAccount: orders-service
