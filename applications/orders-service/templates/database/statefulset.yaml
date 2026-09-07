@@ -76,7 +76,13 @@ spec:
       metadata:
         name: data
         labels:
-{{ include "orders-service.componentLabels" (dict "Values" .Values "Release" .Release "Chart" .Chart "component" "database") | indent 10 }}
+          app.kubernetes.io/managed-by: {{ .Values.global.managedBy | quote }}
+          helm.sh/chart: {{ printf "%s-%s" .Chart.Name .Chart.Version | quote }}
+          app.kubernetes.io/part-of: {{ index .Values.global.labels "app.kubernetes.io/part-of" | quote }}
+          platform.hashicorp.com/phase: {{ index .Values.global.labels "platform.hashicorp.com/phase" | quote }}
+          platform.hashicorp.com/secret-state: "kubernetes-secrets"
+          app.kubernetes.io/instance: {{ .Release.Name | quote }}
+          app.kubernetes.io/component: "database"
       spec:
         accessModes:
           - ReadWriteOnce
