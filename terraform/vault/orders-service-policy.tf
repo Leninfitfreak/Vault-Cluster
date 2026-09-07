@@ -6,6 +6,10 @@ resource "vault_policy" "orders_service" {
       capabilities = ["read"]
     }
 
+    path "database/creds/orders-service" {
+      capabilities = ["read"]
+    }
+
     path "kv/data/orders-service" {
       capabilities = ["read"]
     }

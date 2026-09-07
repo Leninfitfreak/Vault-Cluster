@@ -7,7 +7,7 @@
   labels:
     app.kubernetes.io/part-of: orders-service
     platform.hashicorp.com/phase: application-baseline
-    platform.hashicorp.com/secret-state: kubernetes-secrets
+    platform.hashicorp.com/secret-state: vault-managed
 
 images:
   application:
@@ -28,11 +28,13 @@ serviceAccount:
 
 secrets:
   ordersCredentials:
-    create: false
     name: orders-service-vault-credentials
-    apiKey: fake-local-orders-api-key
-    databaseUsername: orders_user
-    databasePassword: fake-local-orders-password
+
+  databaseBootstrap:
+    name: postgresql-bootstrap-credentials
+
+  dynamicDatabase:
+    name: orders-service-dynamic-db
 
   externalCredentials:
     create: true

@@ -41,13 +41,13 @@ spec:
             - name: POSTGRES_USER
               valueFrom:
                 secretKeyRef:
-                  name: {{ .Values.secrets.ordersCredentials.name }}
-                  key: DB_USERNAME
+                  name: {{ .Values.secrets.databaseBootstrap.name }}
+                  key: username
             - name: POSTGRES_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: {{ .Values.secrets.ordersCredentials.name }}
-                  key: DB_PASSWORD
+                  name: {{ .Values.secrets.databaseBootstrap.name }}
+                  key: password
             - name: PGDATA
               value: /var/lib/postgresql/data/pgdata
           readinessProbe:

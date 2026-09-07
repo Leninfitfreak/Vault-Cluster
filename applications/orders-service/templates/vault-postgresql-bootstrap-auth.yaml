@@ -1,0 +1,14 @@
+{{- if .Values.global.active }}
+apiVersion: secrets.hashicorp.com/v1beta1
+kind: VaultAuth
+metadata:
+  name: postgresql-bootstrap
+  namespace: {{ include "orders-service.namespace" . }}
+spec:
+  vaultConnectionRef: vault-secrets-operator/external-vault
+  method: kubernetes
+  mount: kubernetes
+  kubernetes:
+    role: orders-postgresql-bootstrap
+    serviceAccount: {{ .Values.postgresql.name }}
+{{- end }}

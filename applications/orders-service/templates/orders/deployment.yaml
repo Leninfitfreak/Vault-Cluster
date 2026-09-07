@@ -39,13 +39,13 @@ spec:
             - name: DB_USERNAME
               valueFrom:
                 secretKeyRef:
-                  name: {{ .Values.secrets.ordersCredentials.name }}
-                  key: DB_USERNAME
+                  name: {{ .Values.secrets.dynamicDatabase.name }}
+                  key: username
             - name: DB_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: {{ .Values.secrets.ordersCredentials.name }}
-                  key: DB_PASSWORD
+                  name: {{ .Values.secrets.dynamicDatabase.name }}
+                  key: password
             - name: POSTGRESQL_HOST
               value: {{ .Values.postgresql.name }}
             - name: POSTGRESQL_PORT
