@@ -13,5 +13,9 @@ resource "vault_policy" "orders_service" {
     path "kv/data/orders-service" {
       capabilities = ["read"]
     }
+
+    path "pki/issue/orders-service" {
+      capabilities = ["update"]
+    }
   EOT
 }

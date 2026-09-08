@@ -15,7 +15,7 @@ resource "vault_database_secret_backend_connection" "postgresql" {
     username = var.postgresql_username
 
     password_wo         = var.postgresql_password
-    password_wo_version = 2
+    password_wo_version = 3
   }
 }
 

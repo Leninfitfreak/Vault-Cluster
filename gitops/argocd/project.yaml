@@ -41,3 +41,5 @@ spec:
       kind: VaultStaticSecret
     - group: secrets.hashicorp.com
       kind: VaultDynamicSecret
+    - group: secrets.hashicorp.com
+      kind: VaultPKISecret
