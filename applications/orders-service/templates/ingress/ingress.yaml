@@ -4,6 +4,9 @@ kind: Ingress
 metadata:
   name: {{ .Values.frontend.name }}
   namespace: {{ include "orders-service.namespace" . }}
+  annotations:
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+    traefik.ingress.kubernetes.io/router.tls: "true"
   labels:
 {{ include "orders-service.componentLabels" (dict "Values" .Values "Release" .Release "Chart" .Chart "component" "ingress") | indent 4 }}
 spec:
