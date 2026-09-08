@@ -101,6 +101,7 @@ ingress:
   enabled: true
   className: traefik
   host: orders.local
+  tlsSecretName: orders-service-tls
 
 traefik:
   enabled: true
@@ -108,6 +109,8 @@ traefik:
   serviceType: NodePort
   port: 80
   containerPort: 8000
+  securePort: 443
+  secureContainerPort: 8443
   resources:
     requests:
       cpu: 50m

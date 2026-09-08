@@ -30,6 +30,7 @@ spec:
           imagePullPolicy: {{ .Values.images.traefik.pullPolicy }}
           args:
             - --entrypoints.web.address=:{{ .Values.traefik.containerPort }}
+            - --entrypoints.websecure.address=:{{ .Values.traefik.secureContainerPort }}
             - --ping=true
             - --ping.entrypoint=web
             - --providers.kubernetesingress=true
@@ -38,6 +39,8 @@ spec:
           ports:
             - name: web
               containerPort: {{ .Values.traefik.containerPort }}
+            - name: websecure
+              containerPort: {{ .Values.traefik.secureContainerPort }}
           readinessProbe:
             httpGet:
               path: /ping
@@ -84,4 +87,7 @@ spec:
     - name: web
       port: {{ .Values.traefik.port }}
       targetPort: web
+    - name: websecure
+      port: {{ .Values.traefik.securePort }}
+      targetPort: websecure
 {{- end }}
