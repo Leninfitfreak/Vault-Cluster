@@ -18,3 +18,8 @@ terraform/**/*.tfstate
 terraform/**/*.tfstate.*
 terraform/**/local.auto.tfvars
 !platform/vault-secrets-operator/files/vault-ca.crt
+terraform/**/plan-output.txt
+live-postgresql.yaml
+rendered-orders.yaml
+rendered-postgresql.yaml
+vault_cluster_repo_dump.txt
